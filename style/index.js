@@ -8,7 +8,7 @@ for (const element of allButton) {
         countButton.innerText = count;
     })
 };
-function coinFunction(val_1,val_2) {
+function coinFunction(val_1, val_2) {
     reduceCoin = 20;
     const ballance = document.getElementById('coin_ballance');
     const ballance1 = ballance.innerText
@@ -23,8 +23,25 @@ function coinFunction(val_1,val_2) {
     const data3 = document.getElementById(val_2);
     const data4 = data3.innerText;
     const result = data2 + ' ' + data4;
+
     coin -= reduceCoin;
     ballance.textContent = coin;
+    const now = new Date();
+    const nweCurrentTate = now.toLocaleTimeString();
+    const newCallHistory = document.createElement('div');
+    newCallHistory.classList = 'call_entry'
+    newCallHistory.innerHTML =
+     `
+    <div class='flex justify-between items-center p-2 bg-[rgba(250,250,250,1)] rounded-lg mt-2 mb-2'>
+    <div>
+    <span class='text-[rgba(17,17,17,1)] text-lg font-semibold'>${data2}</span><br>
+    <span class='text-[rgba(92,92,92,1)] text-lg font-normal'>${data4}</span>
+    </div>
+    <span class='text-[rgba(17,17,17,1)] text-lg font-normal'>${nweCurrentTate}</span>
+    </div>
+    `
+    const callHistoryContainer = document.getElementById('call_history_add');
+    callHistoryContainer.prepend(newCallHistory);
     alert(`${result}`)
 }
 const National = document.getElementById('call_icon_1');
