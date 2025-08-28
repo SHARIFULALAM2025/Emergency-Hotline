@@ -1,4 +1,3 @@
-
 const countButton = document.getElementById('addLove');
 const allButton = document.querySelectorAll('.heart_icon');
 let count = 0;
@@ -8,21 +7,13 @@ for (const element of allButton) {
         countButton.innerText = count;
     })
 };
-
-
-
-
-
-
-
 function coinFunction(val_1, val_2) {
     reduceCoin = 20;
     const ballance = document.getElementById('coin_ballance');
     const ballance1 = ballance.innerText
     let coin = parseInt(ballance1);
-
     if (coin < reduceCoin) {
-        alert('stop');
+        alert("you don't have enough coin ! you need at least 20 coin to make a call .");
         return;
     }
     const data1 = document.getElementById(val_1);
@@ -30,26 +21,23 @@ function coinFunction(val_1, val_2) {
     const data3 = document.getElementById(val_2);
     const data4 = data3.innerText;
     const result = data2 + ' ' + data4;
-
     coin -= reduceCoin;
     ballance.textContent = coin;
     const now = new Date();
     const nweCurrentTate = now.toLocaleTimeString();
     const newCallHistory = document.createElement('div');
     newCallHistory.classList = 'call_entry'
-    newCallHistory.innerHTML =
-     `
+    newCallHistory.innerHTML = `
     <div class='flex justify-between items-center p-2 bg-[rgba(250,250,250,1)] rounded-lg mt-2 mb-2'>
     <div>
     <span class='text-[rgba(17,17,17,1)] text-lg font-semibold'>${data2}</span><br>
     <span class='text-[rgba(92,92,92,1)] text-lg font-normal'>${data4}</span>
     </div>
     <span class='text-[rgba(17,17,17,1)] text-lg font-normal'>${nweCurrentTate}</span>
-    </div>
-    `
+    </div>`
     const callHistoryContainer = document.getElementById('call_history_add');
     callHistoryContainer.prepend(newCallHistory);
-    alert(`${result}`)
+    alert(`${result}`);
 }
 const National = document.getElementById('call_icon_1');
 National.addEventListener('click', function () {
@@ -57,7 +45,6 @@ National.addEventListener('click', function () {
 });
 const Police = document.getElementById('call_icon_2');
 Police.addEventListener('click', function () {
-
     coinFunction('Police_Helpline', 'Helpline_Number');
 });
 const Fire = document.getElementById('call_icon_3');
@@ -88,4 +75,55 @@ const Bangladesh = document.getElementById('call_icon_9');
 Bangladesh.addEventListener('click', function () {
     coinFunction('Bangladesh_Railway', 'Railway_Helpline');
 });
-
+// history_clear
+document.getElementById('history_clear').addEventListener('click', function () {
+    document.getElementById('call_history_add').innerText = " ";
+});
+// copy_btn
+let copyNumber = 0;
+function NumberCopy(Help) {
+    const copyTextNumber = document.getElementById('CopyCount').innerText;
+    const copyTextNumberConvert = parseInt(copyTextNumber);
+    copyNumber = copyTextNumberConvert + 1;
+    document.getElementById('CopyCount').innerText = copyNumber;
+    let textCopy = document.getElementById(Help).innerText;
+    navigator.clipboard.writeText(textCopy).then(() => {
+        alert(`Coped Number : ${textCopy}`, +textCopy);
+    });
+};
+const copyButton = document.getElementById('copy_btn');
+copyButton.addEventListener('click', function () {
+    NumberCopy('Emergency_Number');
+});
+const copyButton2 = document.getElementById('Copy_2');
+copyButton2.addEventListener('click', function () {
+    NumberCopy('Helpline_Number');
+});
+const copyButton3 = document.getElementById('Copy_3');
+copyButton3.addEventListener('click', function () {
+    NumberCopy('Service_Number');
+});
+const copyButton4 = document.getElementById('Copy_4');
+copyButton4.addEventListener('click', function () {
+    NumberCopy('Ambulance_Service_Number');
+});
+const copyButton5 = document.getElementById('Copy_5');
+copyButton5.addEventListener('click', function () {
+    NumberCopy('Women_Child_Number');
+});
+const copyButton6 = document.getElementById('Copy_6');
+copyButton6.addEventListener('click', function () {
+    NumberCopy('Corruption_Number');
+});
+const copyButton7 = document.getElementById('Copy_7');
+copyButton7.addEventListener('click', function () {
+    NumberCopy('Electricity_Helpline_Number');
+});
+const copyButton8 = document.getElementById('Copy_8');
+copyButton8.addEventListener('click', function () {
+    NumberCopy('Bra_Helpline_Number');
+});
+const copyButton9 = document.getElementById('Copy_9');
+copyButton9.addEventListener('click', function () {
+    NumberCopy('Railway_Helpline');
+});
