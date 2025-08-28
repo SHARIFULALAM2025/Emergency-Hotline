@@ -8,6 +8,13 @@ for (const element of allButton) {
         countButton.innerText = count;
     })
 };
+
+
+
+
+
+
+
 function coinFunction(val_1, val_2) {
     reduceCoin = 20;
     const ballance = document.getElementById('coin_ballance');
